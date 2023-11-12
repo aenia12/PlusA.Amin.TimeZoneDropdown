@@ -3,7 +3,8 @@ function displayCity(event) {
     let parisTime = moment()
       .tz("Europe/Paris")
       .format("dddd, MMMM D, YYYY h:m A");
-    alert("It is ${parisTime} in Europe/Paris.");
+    let parisTimeZone = "Europe/Paris";
+    alert("It is " + parisTime + " in " + parisTimeZone);
   }
 }
 
