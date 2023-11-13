@@ -5,9 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.37/moment-timezone-with-data-1970-2030.min.js"></script>
-    <script src="style.css"></script>
     <title>TimeZone Dropdown</title>
   </head>
+  <style>
+    label {
+      font-family: "Times New Roman", Times, serif;
+      font-size: large;
+      padding: 15px auto;
+    }
+
+    .cities {
+      font-family: "Times New Roman", Times, serif;
+      font-size: medium;
+      border-radius: 4px;
+    }
+  </style>
   <body>
     <label for="cities">Please choose a city</label>
     <select class="cities" id="cities">
@@ -17,5 +29,32 @@
       <option value="sydney">Sydney 🇦🇺</option>
     </select>
   </body>
-  <script src="app.js"></script>
+  <script>
+    function displayCity(event) {
+      if (event.target.value === "paris") {
+        let parisTime = moment()
+          .tz("Europe/Paris")
+          .format("dddd, MMMM D, YYYY h:mm A");
+        let parisTimeZone = "Europe/Paris";
+        alert("It is " + parisTime + " in " + parisTimeZone);
+      }
+      if (event.target.value === "tokyo") {
+        let tokyoTime = moment()
+          .tz("Asia/Tokyo")
+          .format("dddd, MMMM D, YYYY h:mm A");
+        let tokyoTimeZone = "Asia/Tokyo";
+        alert("It is " + tokyoTime + " in " + tokyoTimeZone);
+      }
+      if (event.target.value === "sydney") {
+        let sydneyTime = moment()
+          .tz("Australia/Sydney")
+          .format("dddd, MMMM D, YYYY h:mm A");
+        let sydneyTimeZone = "Australia/Sydney";
+        alert("It is " + sydneyTime + " in " + sydneyTimeZone);
+      }
+    }
+
+    let citiesElement = document.querySelector("#cities");
+    citiesElement.addEventListener("change", displayCity);
+  </script>
 </html>
